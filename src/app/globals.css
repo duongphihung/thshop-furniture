@@ -1,0 +1,74 @@
+:root {
+    --swiper-theme-color: #ff8f9c !important;
+    --primary: #ff8f9c;
+    --bittersweet: #ff6666;
+    --onxy: #454545;
+    --textColor: #787878;
+    --cultured: #ededed;
+    --sonic-silver: #787878;
+    --sandy-brown: #f6a355;
+
+    --border-radius-md: 10px;
+    --border-radius-sm: 5px;
+
+    --transition-timing: 0.3s ease;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    background: none;
+    font: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+img,
+button,
+a {
+    display: block;
+}
+
+/* CSS Scroll */
+.has-scrollbar {
+    padding-bottom: 5px;
+}
+
+.has-scrollbar::-webkit-scrollbar {
+    width: 12px;
+    /* for vertical scroll */
+    height: 14px;
+    /* for horizontal scroll */
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent;
+    border: 3px solid white;
+    border-radius: 20px;
+}
+
+.has-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: #e6e6e6;
+}
+
+.has-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #cccccc;
+}
+

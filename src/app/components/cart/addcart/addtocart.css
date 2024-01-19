@@ -1,0 +1,23 @@
+.pro-price-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 1px 1px 5px rgb(0 0 0 / 19%);
+}
+
+.pro-amount {
+    padding: 5px 0 0 0;
+}
+
+.btn-add-price,
+.btn-minus-price {
+    font-size: 20px;
+    padding: 5px 10px 8px 10px;
+}
+
+.btn-add-price:hover,
+.btn-minus-price:hover {
+    color: var(--primary);
+    scale: 1.1;
+}

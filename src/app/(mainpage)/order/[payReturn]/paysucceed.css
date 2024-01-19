@@ -1,0 +1,28 @@
+.paysucceed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+
+.paysucceed-img {
+    max-width: 100%; 
+}
+
+.paysucceed-container p {
+    color: var(--onxy);
+    font-size: 20px;
+}
+
+.paysucceed-container a {
+    color: var(--primary);
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.paysucceed-container a:hover {
+    opacity: 0.7;
+}
+

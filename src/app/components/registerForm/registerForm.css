@@ -1,0 +1,107 @@
+.register-container {
+    max-width: 700px;
+    width: 100%;
+    background: #f3f3f3;
+    padding: 25px 30px;
+    border-radius: var(--border-radius-sm);
+}
+
+.register-container .register-title {
+    font-size: 24px;
+    font-weight: 500;
+    position: relative;
+}
+
+.register-container .register-title::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 3px;
+    width: 30px;
+    background: var(--primary);
+}
+
+.register-container form .register-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+.register-details .input-box {
+    width: calc(100% / 2 - 20px);
+    margin-bottom: 25px;
+}
+
+.register-details .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.register-details .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 3px;
+    transition: all 0.3 ease;
+}
+
+.register-details .input-box input:focus {
+    border-color: var(--primary);
+}
+
+.register-btn {
+    height: 45px;
+}
+
+.register-btn input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: var(--border-radius-sm);
+    background: var(--primary);
+    transition: var(--transition-timing);
+}
+
+.register-btn input:hover {
+    background: black;
+    cursor: pointer;
+}
+
+.text {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 25px;
+    gap: 5px;
+}
+
+.link-login {
+    color: var(--primary);
+}
+
+@media screen and (max-width: 640px) {
+    .register-details {
+       flex-direction: column;
+    }
+    .register-details .input-box {
+        width: 100%;
+        
+    }
+    .text {
+        flex-direction: column;
+    }
+}
+
+

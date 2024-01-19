@@ -1,0 +1,91 @@
+.blog-hero {
+    max-width: 114rem;
+    height: 30rem;
+    background: url(/blog-banner.jpg) no-repeat center center / cover;
+}
+
+main {
+    width: 100%;
+    max-width: 65rem;
+    background: white;
+    margin: 0 auto;
+    padding: 3rem;
+    border-radius: var(--border-radius-md);
+    margin-top: -12rem;
+}
+
+main h2 {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+main .blog-detail-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+main .blog-detail-container .blog-profile {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.blog-detail-container .blog-profile .blog-img-container {
+    width: 5rem;
+    height: 5rem;
+    background: url(/avatar-user.jpg) no-repeat center center/cover;
+    border-radius: 50%;
+}
+
+.blog-detail-container .blog-profile .blog-profile-info {
+    margin: 0 1rem;
+    color: #5b5963;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.blog-profile .blog-profile-info h3 {
+    text-transform: uppercase;
+}
+
+.blog-btn {
+    display: inline-block;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    padding: 0.3rem 1.5rem;
+    background-color: var(--bittersweet);
+    color: white    ;
+    border-radius: var(--border-radius-sm);
+}
+
+main .blog-detail-content p {
+    color: #5b5963;
+    margin: 1rem 0;
+}
+
+main .blog-detail-content h4 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #5b5963;
+    margin: 1rem 0;
+}
+
+main .blog-detail-content .content-img-container {
+    width: 100%;
+    height: 35rem;
+    background: url(/blogs/blog-1.jpg) no-repeat center center/cover;
+    margin: 20px 0;
+}
+
+.blog-popular {
+    margin-bottom: 50px;
+}
+
+.blog-popular-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}

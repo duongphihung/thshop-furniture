@@ -1,0 +1,22 @@
+.btn-reset-filter {
+    background: var(--primary);
+    color: white;
+    width: 100%;
+    border-radius: var(--border-radius-sm);
+    padding: 10px 0px;
+    margin-top: 20px;
+    transition: var(--transition-timing);
+}
+
+.btn-reset-filter:hover {
+    background: black;
+}
+
+.ant-select-selector:hover {
+    border-color: var(--primary) !important;
+}
+
+.ant-select-selector {
+    border-color: #d9d9d9 !important;
+    box-shadow: none !important;
+}

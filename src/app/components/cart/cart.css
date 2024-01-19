@@ -1,0 +1,85 @@
+.cart-wrapper {
+    max-height: 50vh;
+    overflow: auto;
+}
+
+.empty-card-img {
+    max-width: 200px;
+}
+
+.cart-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cart-product-img {
+    width: 50px;
+    height: 50px !important;
+    border-radius: var(--border-radius-sm);
+    object-fit: cover;
+}
+
+.cart-wrapper-option {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-group-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: 1px 1px 5px rgb(0 0 0 / 19%);
+}
+
+.cart-btn-add,
+.cart-btn-minus {
+    padding: 6px 14px;
+    font-size: 22px;
+}
+
+.cart-btn-add:hover,
+.cart-btn-minus:hover {
+    color: var(--primary);
+    scale: 1.2;
+}
+
+
+.cart-select-pro {
+    width: 50px;
+    padding: 6px 5px;
+}
+
+.cart-delete-pro {
+    font-size: 20px !important;
+    color: var(--primary) !important;
+}
+
+.cart-totalprice {
+    color: var(--primary);
+    font-size: 18px;
+}
+
+.css-1t6e9jv-MuiCardActions-root {
+    padding: 0;
+}
+
+.Go-to-cart {
+    background-color: var(--primary) !important;
+}
+
+.Go-to-cart:hover {
+    background-color: black !important;
+}
+
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.css-46bh2p-MuiCardContent-root:last-child {
+    padding-bottom: 20px;
+}

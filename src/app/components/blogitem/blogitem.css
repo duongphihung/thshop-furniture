@@ -1,0 +1,33 @@
+.blogItem-card {
+    min-width: calc(25% - 22.5px);
+}
+
+.blogItem-banner {
+    width: 100%;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 20px;
+}
+
+.blogItem-category {
+    width: max-content;
+    color: var(--primary);
+    font-size: 16px;
+}
+
+.blogItem-title {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    transition: var(--transition-timing);
+}
+
+.blogItem-title:hover {
+    color: var(--primary);
+}
+
+.blogItem-meta {
+    color: var(--sonic-silver);
+    font-size: 16px;
+}

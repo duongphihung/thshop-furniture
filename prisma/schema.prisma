@@ -1,0 +1,284 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model Account {
+    id                String  @id @default(auto()) @map("_id") @db.ObjectId
+    userId            String  @db.ObjectId
+    type              String
+    provider          String
+    providerAccountId String  @map("provider_account_id")
+    refresh_token     String? @db.String
+    access_token      String? @db.String
+    expires_at        Int?
+    token_type        String?
+    scope             String?
+    id_token          String? @db.String
+    session_state     String?
+    // relations
+    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([provider, providerAccountId])
+    @@map("accounts")
+}
+
+model Session {
+    id           String   @id @default(auto()) @map("_id") @db.ObjectId
+    sessionToken String   @unique @map("session_token")
+    userId       String   @db.ObjectId
+    expires      DateTime
+    // relations
+    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("sessions")
+}
+
+model User {
+    id             String     @id @default(auto()) @map("_id") @db.ObjectId
+    name           String?
+    email          String?    @unique
+    emailVerified  DateTime?  @map("email_verified")
+    hashedPassword String?
+    role           String?
+    image          String?
+    gender         Int?
+    phoneNumber    String?
+    createdAt      DateTime   @default(now())
+    updatedAt      DateTime   @updatedAt
+    // relations
+    accounts       Account[]
+    sessions       Session[]
+    orders         Order[]
+    locations      Location[]
+    comments       Comment[]
+    cart           Cart[]
+
+    @@map("users")
+}
+
+model Location {
+    id          String  @id @default(auto()) @map("_id") @db.ObjectId
+    postalCode  String?
+    name        String?
+    telephone   String?
+    addressLine String?
+    description String?
+    WardCode    String?
+    DistrictID  Int?
+    ProvinceID  Int?
+    townCity    String?
+    country     String?
+    userId      String? @db.ObjectId
+    // relations
+    user        User?   @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+    @@map("locations")
+}
+
+model VerificationToken {
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    identifier String
+    token      String   @unique
+    expires    DateTime
+
+    @@unique([identifier, token])
+    @@map("verificationtokens")
+}
+
+model Blog {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    title       String
+    description String
+    url         String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+
+    @@map("notes")
+}
+
+model Product {
+    id               String    @id @default(auto()) @map("_id") @db.ObjectId
+    name             String
+    brand            String?
+    price            Int
+    weight           String?
+    size             String?
+    placement        String?
+    material         String?
+    imageUrl         String
+    images           String?
+    video            String?
+    color            String?
+    description      String
+    shortDescription String?
+    other            String?
+    quantity         Int?
+    status           Int?
+    createdAt        DateTime? @default(now())
+    updatedAt        DateTime? @updatedAt
+    categoryId       String?   @db.ObjectId
+    cartIds          String[]  @db.ObjectId
+
+    // relations
+    category  Category?   @relation(fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    comments  Comment[]
+    carts     Cart[]      @relation(fields: [cartIds], references: [id])
+    orderItem OrderItem[]
+    coupons   Coupon[]    @relation(fields: [couponIds], references: [id])
+    couponIds String[]    @db.ObjectId
+    discount  Discount?
+
+    @@map("products")
+}
+
+model Cart {
+    id         String    @id @default(auto()) @map("_id") @db.ObjectId
+    quantity   Int
+    amount     String?
+    userId     String?   @db.ObjectId
+    productIds String[]  @db.ObjectId
+    createdAt  DateTime  @default(now())
+    updatedAt  DateTime  @updatedAt
+    //relations
+    products   Product[] @relation(fields: [productIds], references: [id])
+    User       User?     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+    @@map("carts")
+}
+
+model Order {
+    id            String      @id @default(auto()) @map("_id") @db.ObjectId
+    orderCode     String
+    paymentMethod String?
+    location      String?
+    userId        String?     @db.ObjectId
+    note          String?
+    orderItems    OrderItem[]
+    totalPrice    Int
+    status        Int
+    createdAt     DateTime    @default(now())
+    updatedAt     DateTime    @updatedAt
+    // relations
+    user          User?       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    payment       Payment?
+    invoice       Invoice?
+
+    @@map("orders")
+}
+
+model OrderItem {
+    id        String  @id @default(auto()) @map("_id") @db.ObjectId
+    quantity  Int?
+    price     Int?
+    //  relations
+    order     Order?  @relation(fields: [ordersId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    ordersId  String? @db.ObjectId
+    productId String @db.ObjectId
+    product   Product @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+    @@map("order_item")
+}
+
+model Payment {
+    id            String   @id @default(auto()) @map("_id") @db.ObjectId
+    amount        BigInt?
+    provider      String?
+    paymentMethod String?
+    status        Int
+    order         Order?   @relation(fields: [orderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    orderId       String   @unique @db.ObjectId
+    createdAt     DateTime @default(now())
+    updatedAt     DateTime @updatedAt
+    invoice       Invoice?
+
+    @@map("payments")
+}
+
+model Coupon {
+    id          String    @id @default(auto()) @map("_id") @db.ObjectId
+    code        String    @unique
+    description String?
+    coupon      String?
+    quantity    Int
+    dateStart   DateTime?
+    dateEnd     DateTime?
+    status      Int?
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    // relations
+    products    Product[] @relation(fields: [productIds], references: [id])
+    productIds  String[]  @db.ObjectId
+
+    @@map("coupons")
+}
+
+model Discount {
+    id          String    @id @default(auto()) @map("_id") @db.ObjectId
+    discount    String?
+    description String?
+    dateStart   DateTime?
+    dateEnd     DateTime?
+    status      Int?
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    // relations
+    product     Product   @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    productId   String    @unique @db.ObjectId // relation scalar field (used in the `@relation` attribute above)
+
+    @@map("discounts")
+}
+
+model Invoice {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    date      DateTime
+    status    Int?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    //relations
+    order     Order?   @relation(fields: [orderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    orderId   String   @unique @db.ObjectId
+    payment   Payment? @relation(fields: [paymentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    paymentId String   @unique @db.ObjectId
+
+    @@map("invoices")
+}
+
+model Comment {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    content   String
+    images    String?
+    video     String?
+    rating    Int
+    status    Int?
+    productId String?  @db.ObjectId
+    userId    String?  @db.ObjectId
+    createdAt DateTime @default(now()) @db.Timestamp
+    updatedAt DateTime @updatedAt
+    // relations
+    product   Product? @relation(fields: [productId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+    user      User?    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+    @@map("comments")
+}
+
+model Category {
+    id          String    @id @default(auto()) @map("_id") @db.ObjectId
+    name        String
+    description String
+    icon        String?
+    createdAt   DateTime? @default(now()) @db.Timestamp
+    updatedAt   DateTime? @updatedAt @db.Timestamp
+    // relations
+    products    Product[]
+
+    @@map("categorys")
+}

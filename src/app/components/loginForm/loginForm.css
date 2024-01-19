@@ -1,0 +1,139 @@
+.login-container {
+    max-width: 700px;
+    width: 100%;
+    background: #f3f3f3;
+    padding: 25px 30px;
+    border-radius: var(--border-radius-sm);
+}
+
+.login-container .login-title {
+    font-size: 24px;
+    font-weight: 500;
+    position: relative;
+}
+
+.login-container .login-title::before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 3px;
+    width: 30px;
+    background: var(--primary);
+}
+
+.login-container form .login-details {
+    margin: 20px 0 12px 0;
+}
+
+.login-details .input-box {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.login-details .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.login-details .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 3px;
+    transition: all 0.3 ease;
+}
+
+.login-details .input-box input:focus,
+.login-details .input-box input:valid {
+    border-color: var(--primary);
+}
+
+.login-btn {
+    height: 45px;
+}
+
+.login-btn input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border-radius: var(--border-radius-sm);
+    background: var(--primary);
+    transition: var(--transition-timing);
+}
+
+.login-btn input:hover {
+    background: black;
+    cursor: pointer;
+}
+
+.login-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    gap: 5px;
+}
+
+.link-register {
+    color: var(--primary);
+}
+
+.login-with {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    max-width: 200px;
+    border-top: 1px solid rgb(188, 188, 188);
+}
+
+.login-with-facebook,
+.login-with-github,
+.login-with-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 18px;
+    margin: 10px auto;
+    width: 300px;
+    padding: 10px 15px;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-timing);
+}
+
+.login-with-facebook {
+    background-color: #3B5998;
+    color: white;
+}
+
+.login-with-google {
+    border: 1px solid rgb(192, 192, 192);
+}
+
+.login-with-facebook:hover,
+.login-with-google:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 640px) {
+
+    .login-with-facebook,
+    .login-with-google {
+        width: 220px;
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,50 @@
+:root {
+    --width: 18px;
+    --height: 18px;
+    --bounceHeight: 30px;
+}
+
+.loading-text {
+    color: var(--primary);
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.bounceball {
+    position: relative;
+    display: inline-block;
+    height: 37px;
+    width: var(--width);
+}
+
+.bounceball:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    width: var(--width);
+    height: var(--height);
+    border-radius: 50%;
+    background-color: var(--primary);
+    transform-origin: 50%;
+    animation: bounce 500ms alternate infinite ease;
+}
+
+@keyframes bounce {
+    0% {
+        top: var(--bounceHeight);
+        height: 5px;
+        border-radius: 60px 60px 20px 20px;
+        transform: scaleX(2);
+    }
+
+    35% {
+        height: var(--height);
+        border-radius: 50%;
+        transform: scaleX(1);
+    }
+
+    100% {
+        top: 0;
+    }
+}
